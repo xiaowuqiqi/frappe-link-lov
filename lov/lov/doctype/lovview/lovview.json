@@ -1,0 +1,77 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:VIEW{YY}{MM}{DD}{######}",
+ "creation": "2023-06-07 19:20:34.654378",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "lovcode",
+  "lovname",
+  "lovtitle",
+  "lovcodtype",
+  "lovfields"
+ ],
+ "fields": [
+  {
+   "fieldname": "lovname",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "\u89c6\u56fe\u540d\u79f0",
+   "reqd": 1
+  },
+  {
+   "fieldname": "lovcodtype",
+   "fieldtype": "Link",
+   "label": "\u89c6\u56fe\u5bf9\u5e94codType",
+   "options": "DocType",
+   "reqd": 1
+  },
+  {
+   "fieldname": "lovcode",
+   "fieldtype": "Data",
+   "label": "lovcode",
+   "read_only": 1
+  },
+  {
+   "fieldname": "lovtitle",
+   "fieldtype": "Data",
+   "label": "\u5f39\u7a97\u540d\u79f0"
+  },
+  {
+   "fieldname": "lovfields",
+   "fieldtype": "Table",
+   "label": "\u89c6\u56fe\u5217",
+   "options": "LovViewField"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-06-09 23:26:08.787494",
+ "modified_by": "Administrator",
+ "module": "Lov",
+ "name": "LovView",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
