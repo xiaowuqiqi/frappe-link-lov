@@ -21,6 +21,7 @@ const LovViewObj = {
             frm.set_query("lovshowfield", function () {
                 return {
                     "filters": {
+                        "fieldtype": ["not in", 'Table'],
                         "parent": frm.doc.lovcodtype,
                     },
                 };
@@ -28,6 +29,7 @@ const LovViewObj = {
             frm.set_query('lovviewfieldname', "lovfields", function () {
                 return {
                     "filters": {
+                        "fieldtype": ["not in", 'Table'],
                         "parent": frm.doc.lovcodtype,
                     },
                 };
@@ -47,20 +49,3 @@ const LovViewObj = {
 
 }
 frappe.ui.form.on('LovView', LovViewObj);
-// frappe.ui.form.on('LovViewField', { // 这里是子表的docType
-// // 这里 _ 前边是字段名字（authors）
-//     lovfields_add: function (frm) {
-//         console.log(frm)
-//     },
-// });
-// frappe.form.link_formatters["DocField"] = function (value, doc, docfield) {
-// 	console.log(22,value, doc.get_fields, docfield.get_fields)
-// 	console.log(23,doc, docfield)
-// };
-// frappe.form.link_formatters['Employee'] = function(value, doc) {
-//     if(doc.employee_name && doc.employee_name !== value) {
-//         return value + ': ' + doc.employee_name;
-//     } else {
-//         return value;
-//     }
-// }

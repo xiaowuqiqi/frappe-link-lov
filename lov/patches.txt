@@ -1,0 +1,2 @@
+
+lov.lov.doctype.lovview.patches.initdocfield

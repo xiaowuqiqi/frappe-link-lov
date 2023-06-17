@@ -3,15 +3,6 @@
 
 frappe.ui.form.on('LovViewField', { // 这里是子表的docType
 // 这里 _ 前边是字段名字（authors）
-    refresh: function (frm) {
-        console.log(frm)
-        console.log(frappe.form)
-    },
+//     refresh: function (frm) {
+//     },
 });
-// frappe.form.link_formatters['Employee'] = function(value, doc) {
-//     if(doc.employee_name && doc.employee_name !== value) {
-//         return value + ': ' + doc.employee_name;
-//     } else {
-//         return value;
-//     }
-// }

@@ -9,8 +9,16 @@ from frappe import _, is_whitelisted
 from frappe.permissions import has_permission
 from frappe.utils import cint, cstr, unique
 
+
 class LovView(Document):
     pass
+
+
+@frappe.whitelist()
+def get_link_title(lovviewcode, docName, name):
+    # 通过视图编码查询到对应的字段属性
+    fieldData = (item for item in getAllByLovView(lovviewcode) if item['name'] == item['lovshowfield'])
+    return frappe.db.get_value(docName, name, list(fieldData)[0]['fieldname'])
 
 
 @frappe.whitelist()
@@ -33,9 +41,11 @@ def getAllByLovView(docName):
     ).run(as_dict=1)
     return query
 
+
 def relevance_sorter(key, query, as_dict):
-	value = _(key.name if as_dict else key[0])
-	return (cstr(value).lower().startswith(query.lower()) is not True, value)
+    value = _(key.name if as_dict else key[0])
+    return (cstr(value).lower().startswith(query.lower()) is not True, value)
+
 
 def get_std_fields_list(meta, key):
     # get additional search fields
@@ -52,6 +62,7 @@ def get_std_fields_list(meta, key):
         sflist.append(key)
 
     return sflist
+
 
 @frappe.whitelist()
 def search_widget(

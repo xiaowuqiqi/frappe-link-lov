@@ -1,7 +1,7 @@
 const DocTypeObj = {
     validate: (frm) => {
         const validateErrList = frm.doc.fields
-            .filter(fieldData => fieldData.fieldtype === "Link" && !fieldData.lovviewcode)
+            .filter(fieldData => fieldData.fieldtype === "Link" && !fieldData.lovviewcode && fieldData.islov)
             .map(fieldData => fieldData.label)
         if (validateErrList.length > 0) {
             const str = validateErrList.reduce((total, item) => total + `,${item}`, '')
@@ -11,7 +11,7 @@ const DocTypeObj = {
     },
     before_save: async function (frm) {
         const fieldByLovviewcodeList = frm.doc.fields
-            .filter(fieldData => fieldData.fieldtype === "Link" && fieldData.lovviewcode)
+            .filter(fieldData => fieldData.fieldtype === "Link" && fieldData.lovviewcode && fieldData.islov)
         const dataList = await Promise.all(fieldByLovviewcodeList.map(field =>
             frappe.db.get_list("LovView", {
                 filters: {lovcode: field.lovviewcode},

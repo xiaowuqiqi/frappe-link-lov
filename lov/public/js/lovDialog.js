@@ -139,7 +139,6 @@ export class LovDialog extends frappe.ui.form.MultiSelectDialog {
     make() {
         // let doctype_plural = __(this.doctype).plural();
         let title = __(this.dialogTitle);
-
         this.dialog = new frappe.ui.Dialog({
             title: title,
             fields: this.fields,

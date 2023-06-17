@@ -1,2 +1,2 @@
-import './lov'
-import './intFieldLinkByLov'
+import './controlLinkByLov'
+import './docFieldByLov'
