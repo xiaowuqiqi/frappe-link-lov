@@ -12,6 +12,7 @@
   "lovname",
   "lovtitle",
   "lovcodtype",
+  "lovshowfield",
   "lovfields"
  ],
  "fields": [
@@ -45,11 +46,17 @@
    "fieldtype": "Table",
    "label": "\u89c6\u56fe\u5217",
    "options": "LovViewField"
+  },
+  {
+   "fieldname": "lovshowfield",
+   "fieldtype": "Link",
+   "label": "\u89c6\u56fe\u5c55\u793a\u5b57\u6bb5",
+   "options": "DocField"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-06-09 23:26:08.787494",
+ "modified": "2023-06-20 01:08:04.819557",
  "modified_by": "Administrator",
  "module": "Lov",
  "name": "LovView",

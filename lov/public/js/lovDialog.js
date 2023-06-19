@@ -1,4 +1,78 @@
 export class LovDialog extends frappe.ui.form.MultiSelectDialog {
+    get_primary_filters() {
+        let fields = [];
+
+        let columns = new Array(3);
+
+        // Hack for three column layout
+        // To add column break
+        columns[0] = [
+            {
+                fieldtype: "Data",
+                label: __("Name"),
+                fieldname: "search_term",
+            },
+        ];
+        columns[1] = [];
+        columns[2] = [];
+
+        if ($.isArray(this.setters)) {
+            this.setters.forEach((setter, index) => {
+                columns[(index + 1) % 3].push(setter);
+            });
+        } else {
+            Object.keys(this.setters).forEach((setter, index) => {
+                let df_prop = frappe.meta.docfield_map[this.doctype][setter];
+                // Index + 1 to start filling from index 1
+                // Since Search is a standrd field already pushed
+                columns[(index + 1) % 3].push({
+                    fieldtype: ['Text Editor'].includes(df_prop.fieldtype) ? 'Data' : df_prop.fieldtype,
+                    label: df_prop.label,
+                    fieldname: setter,
+                    options: df_prop.options,
+                    default: this.setters[setter],
+                });
+            });
+        }
+
+        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/seal
+        if (Object.seal) {
+            Object.seal(columns);
+            // now a is a fixed-size array with mutable entries
+        }
+
+        if (this.allow_child_item_selection) {
+            this.child_doctype = frappe.meta.get_docfield(
+                this.doctype,
+                this.child_fieldname
+            ).options;
+            columns[0].push({
+                fieldtype: "Check",
+                label: __("Select {0}", [this.child_doctype]),
+                fieldname: "allow_child_item_selection",
+                onchange: this.toggle_child_selection.bind(this),
+            });
+        }
+
+        fields = [
+            ...columns[0],
+            {fieldtype: "Column Break"},
+            ...columns[1],
+            {fieldtype: "Column Break"},
+            ...columns[2],
+            {fieldtype: "Section Break", fieldname: "primary_filters_sb"},
+        ];
+
+        if (this.add_filters_group) {
+            fields.push({
+                fieldtype: "HTML",
+                fieldname: "filter_area",
+            });
+        }
+
+        return fields;
+    }
+
     get_filters_from_setters() {
         let me = this;
         let filters = (this.get_query ? this.get_query().filters : {}) || {};
@@ -13,9 +87,13 @@ export class LovDialog extends frappe.ui.form.MultiSelectDialog {
             }
         } else {
             Object.keys(this.setters).forEach(function (setter) {
-                var value = me.dialog.fields_dict[setter].get_value();
+                var value = me.dialog.fields_dict[setter]?.get_value?.() || '';
                 value = (value || '').replace(/^\s*|\s*$/g, '')
-                if (me.dialog.fields_dict[setter].df.fieldtype == "Data" && value) {
+                if (me.dialog.fields_dict[setter].df.fieldtype === "Data" && value) {
+                    filters[setter] = ["like", "%" + value + "%"];
+                } else if (me.dialog.fields_dict[setter].df.fieldtype === "Text Editor" && value) {
+                    value = me.dialog.fields_dict[setter]?.value
+                    value = (value || '').replace(/^\s*|\s*$/g, '')
                     filters[setter] = ["like", "%" + value + "%"];
                 } else {
                     filters[setter] = value || undefined;
@@ -132,7 +210,7 @@ export class LovDialog extends frappe.ui.form.MultiSelectDialog {
             ...data_values,
             ...filters_data,
             filtered_children,
-        },this);
+        }, this);
         this.dialog.cancel()
     }
 

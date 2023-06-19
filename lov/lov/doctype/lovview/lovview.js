@@ -29,7 +29,15 @@ const LovViewObj = {
             frm.set_query('lovviewfieldname', "lovfields", function () {
                 return {
                     "filters": {
-                        "fieldtype": ["not in", 'Table'],
+                        "fieldtype": ["not in", [
+                            'Table',
+                            'Section Break',
+                            'Tab Break',
+                            'Column Break',
+                            'HTML',
+                            'HTML Editor',
+                            // 'Small Text',
+                        ]],
                         "parent": frm.doc.lovcodtype,
                     },
                 };
