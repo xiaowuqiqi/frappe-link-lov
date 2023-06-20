@@ -1,1 +1,0 @@
-lov.lov.doctype.lovview.patches.initdocfield # 2023-6-21

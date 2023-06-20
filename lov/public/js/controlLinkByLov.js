@@ -254,7 +254,6 @@ frappe.ui.form.ControlLink.prototype.set_link_title = async function (value) {
 frappe.ui.form.ControlLink.prototype.handle_lov = function () {
     const me = this;
     const lovviewcode = me.df.lovviewcode
-    console.log(lovviewcode)
     if (!lovviewcode) {
         frappe.throw({message: __("您没有配置 lovviewcode 参数，请设置一个lov视图编码"), title: __("错误")});
     }

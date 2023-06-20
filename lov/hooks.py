@@ -13,6 +13,7 @@ app_license = "MIT"
 # include js, css files in header of desk.html
 app_include_css = "lov.bundle.css"
 app_include_js = "lov.bundle.js"
+after_migrate = "lov.lov.doctype.lovview.patches.initdocfield.execute"
 # include js, css files in header of web template
 # web_include_css = "/assets/lov/css/lov.css"
 # web_include_js = "/assets/lov/js/lov.js"
