@@ -24,6 +24,7 @@
    "reqd": 1
   },
   {
+   "description": "\u6ce8\u610f\uff0c\u8be5\u5c5e\u6027\u4fdd\u5b58\u540e\u4e0d\u53ef\u518d\u6b21\u4fee\u6539\u3002",
    "fieldname": "lovcodtype",
    "fieldtype": "Link",
    "label": "\u89c6\u56fe\u5bf9\u5e94codType",
@@ -39,13 +40,19 @@
   {
    "fieldname": "lovtitle",
    "fieldtype": "Data",
+   "in_filter": 1,
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
    "label": "\u5f39\u7a97\u540d\u79f0"
   },
   {
    "fieldname": "lovfields",
    "fieldtype": "Table",
    "label": "\u89c6\u56fe\u5217",
-   "options": "LovViewField"
+   "options": "LovViewField",
+   "reqd": 1
   },
   {
    "description": "link\u8f93\u5165\u6846\u4e2d\u5c55\u793a\u7684\u503c\u5bf9\u5e94\u5b57\u6bb5\uff0c\u5982\u679c\u4e3a\u7a7a\uff0c\u9ed8\u8ba4\u9009\u62e9 name \u5b57\u6bb5\u4f5c\u4e3a\u5c55\u793a\u5b57\u6bb5",
@@ -57,7 +64,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-06-20 02:34:57.968043",
+ "modified": "2023-06-20 23:03:00.302044",
  "modified_by": "Administrator",
  "module": "Lov",
  "name": "LovView",

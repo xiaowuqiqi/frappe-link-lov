@@ -7,9 +7,7 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "lovviewfieldname",
-  "lovviewfieldcode",
-  "lovviewfielddescription"
+  "lovviewfieldname"
  ],
  "fields": [
   {
@@ -23,24 +21,12 @@
    "label": "\u5b57\u6bb5\u540d\u79f0",
    "options": "DocField",
    "reqd": 1
-  },
-  {
-   "fieldname": "lovviewfieldcode",
-   "fieldtype": "Data",
-   "label": "\u5b57\u6bb5Code",
-   "read_only": 1
-  },
-  {
-   "fieldname": "lovviewfielddescription",
-   "fieldtype": "Data",
-   "label": "\u5b57\u6bb5\u8be6\u60c5",
-   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-06-08 15:12:43.761344",
+ "modified": "2023-06-20 21:54:44.697791",
  "modified_by": "Administrator",
  "module": "Lov",
  "name": "LovViewField",

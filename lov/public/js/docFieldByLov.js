@@ -14,8 +14,8 @@ const DocTypeObj = {
             .filter(fieldData => fieldData.fieldtype === "Link" && fieldData.lovviewcode && fieldData.islov)
         const dataList = await Promise.all(fieldByLovviewcodeList.map(field =>
             frappe.db.get_list("LovView", {
-                filters: {lovcode: field.lovviewcode},
-                fields: ["lovcode", "name", 'lovcodtype']
+                filters: {name: field.lovviewcode},
+                fields: ["name", 'lovcodtype']
             })
         ))
         dataList.forEach(([{lovcodtype}], i) => {

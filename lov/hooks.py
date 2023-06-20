@@ -1,9 +1,9 @@
 from . import __version__ as app_version
 
 app_name = "lov"
-app_title = "Lov"
+app_title = "lov"
 app_publisher = "wz1024"
-app_description = "lov-A mini popup of selected data, which helps us to better display the data to be selected"
+app_description = "lov mini popup of selected data, which helps us to better display the data to be selected"
 app_email = "wuzhanbbb@163.com"
 app_license = "MIT"
 
@@ -13,7 +13,6 @@ app_license = "MIT"
 # include js, css files in header of desk.html
 app_include_css = "lov.bundle.css"
 app_include_js = "lov.bundle.js"
-
 # include js, css files in header of web template
 # web_include_css = "/assets/lov/css/lov.css"
 # web_include_js = "/assets/lov/js/lov.js"

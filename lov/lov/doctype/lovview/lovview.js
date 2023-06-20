@@ -6,6 +6,13 @@ const LovViewObj = {
     onload: function (frm) {
         LovViewObj.oldLovcodtypeVal = frm.doc.lovcodtype
     },
+    lovname: function (frm) {
+        const lovtitle = frm.doc.lovtitle
+        if (!lovtitle || lovtitle.trim() === '') {
+            const lovname = frm.doc.lovname
+            frm.set_value('lovtitle', lovname)
+        }
+    },
     lovcodtype: function (frm) {
         if (!LovViewObj.oldLovcodtypeVal || LovViewObj.oldLovcodtypeVal !== frm.doc.lovcodtype) {
             frm.set_value('lovfields', null)
@@ -13,10 +20,10 @@ const LovViewObj = {
             LovViewObj.oldLovcodtypeVal = frm.doc.lovcodtype
         }
         if (!frm.doc.lovcodtype || frm.doc.lovcodtype.trim() === '') {
-            frm.toggle_enable('lovfields', false) // 设置不可操作
+            // frm.toggle_enable('lovfields', false) // 设置不可操作
             frm.toggle_enable('lovshowfield', false) // 设置不可操作
         } else {
-            frm.toggle_enable('lovfields', true) // 设置不可操作
+            // frm.toggle_enable('lovfields', true) // 设置可操作
             frm.toggle_enable('lovshowfield', true)
             frm.set_query("lovshowfield", function () {
                 return {
@@ -44,6 +51,12 @@ const LovViewObj = {
             });
         }
     },
+    before_save(frm) {
+        if (frm.doc.lovcodtype) {
+            //保存后，doctype就不能在次修改了，防止修改后使用的link报错
+            frm.toggle_enable('lovcodtype', false) // 设置不可操作
+        }
+    },
     refresh(frm) {
         const code = frm.doc.name
         LovViewObj.lovcodtype(frm)
@@ -52,6 +65,10 @@ const LovViewObj = {
         if (!lovtitle || lovtitle.trim() === '') {
             const lovname = frm.doc.lovname
             frm.set_value('lovtitle', lovname)
+        }
+        if (frm.doc.lovcodtype) {
+            //保存后，doctype就不能在次修改了，防止修改后使用的link报错
+            frm.toggle_enable('lovcodtype', false) // 设置不可操作
         }
     },
 

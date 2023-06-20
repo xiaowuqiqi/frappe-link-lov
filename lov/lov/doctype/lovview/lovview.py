@@ -18,7 +18,8 @@ class LovView(Document):
 def get_link_title(lovviewcode, docName, name):
     # 通过视图编码查询到对应的字段属性
     fieldData = (item for item in getAllByLovView(lovviewcode) if item['name'] == item['lovshowfield'])
-    return frappe.db.get_value(docName, name, list(fieldData)[0]['fieldname'])
+    fieldname = 'name' if len(list(fieldData)) == 0 else list(fieldData)[0]['fieldname']
+    return frappe.db.get_value(docName, name, fieldname)
 
 
 @frappe.whitelist()

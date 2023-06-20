@@ -1,11 +1,6 @@
 import frappe
-from frappe.model.document import Document
-
 @frappe.whitelist()
 def execute():
-    """initDocField"""
-
-    # Write your patch here.
     def createFieldData(parent, fieldname, label, fieldtype, idx):
         return {
             'doctype': 'DocField',
