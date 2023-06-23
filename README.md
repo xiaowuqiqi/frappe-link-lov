@@ -31,7 +31,7 @@ bench --site [sitename] migrate
 > 这一步作用是修改 DocField 文档的 Show Title in Link Fields 属性，以及为 link 组件添加 Is Lov 和 Lov View Code 属性。
 >
 > 如果不想执行该指令，您还可以手动添加这两个属性，需要配置好这两个属性的 Label、Type、Name即可，配置方式如下图所示。
-> ![image-20230623224116105](action/readme/img_4.png)
+> ![image-20230623224116105](https://github.com/wuzhan9697/frappe-link-lov/blob/3b5bb3ce914f410d41f7e337f02e8fa32afc0939/action/readme/img_4.png)
 
 ### 使用
 
@@ -47,6 +47,7 @@ bench --site [sitename] migrate
 ![img_1](action/readme/Video_20230623232126 00_00_00-00_00_30.gif)
 
 这时点击 link 组件输入框的放大镜图标，效果如下。
+
 
 ![img_1](action/readme/Video_20230623231837 00_00_00-00_00_30.gif)
 
