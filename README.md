@@ -39,16 +39,16 @@ bench --site [sitename] migrate
 
 添加的数据为一个视图，它可以绑定到多个 link 上。
 
-![image-20230623224116105](action/readme/img.png)
+![img_1](action/readme/Video_20230623232606 00_00_00-00_00_30.gif)
 
 
 安装成功后，你会发现在编辑 link 组件时会有 Is Lov 属性，选择它，然后输入刚刚配置好的 lov view code ，如下图。至此，即可配置好一个 link 组件 lov 样式了。
 
-![img_2](action/readme/img_2.png)
+![img_1](action/readme/Video_20230623232126 00_00_00-00_00_30.gif)
 
 这时点击 link 组件输入框的放大镜图标，效果如下。
 
-![img_1](action/readme/img_1.png)
+![img_1](action/readme/Video_20230623231837 00_00_00-00_00_30.gif)
 
 #### License
 
